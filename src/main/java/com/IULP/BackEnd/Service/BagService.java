@@ -1,8 +1,11 @@
 package com.IULP.BackEnd.Service;
 
+import org.springframework.stereotype.Service;
+
 import java.io.IOException;
 
-public class bagService {
+@Service
+public class BagService {
     public void process(){
         String[] bag = new String[]{"rosbag record -a"};
 
