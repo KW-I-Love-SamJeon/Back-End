@@ -1,12 +1,12 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '2.7.6'
+	id 'org.springframework.boot' version '2.7.2'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 
 group = 'com.IULP'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '18'
 
 configurations {
 	compileOnly {
@@ -16,30 +16,23 @@ configurations {
 
 repositories {
 	mavenCentral()
-	maven { url "http://repository.aspose.com/repo/"
-		allowInsecureProtocol true}
 }
 
 dependencies {
+	implementation 'com.auth0:java-jwt:4.0.0'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.jsoup:jsoup:1.14.2'
 	implementation 'junit:junit:4.13.2'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-	implementation ('org.springframework.boot:spring-boot-starter-web') {
-		exclude module: 'spring-boot-starter-tomcat'
-	}
-	implementation 'org.jsoup:jsoup:1.14.2'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	compileOnly('org.springframework.boot:spring-boot-starter-data-jpa')
-	compileOnly('com.h2database:h2')
-	compileOnly group: 'org.apache.tomcat', name: 'tomcat-servlet-api', version: '8.0.12'
-	implementation 'com.auth0:java-jwt:4.0.0'
-
 	implementation 'org.jetbrains:annotations:20.1.0'
+
 	compileOnly 'org.projectlombok:lombok'
-	compileOnly(group: 'com.aspose', name: 'aspose-3d', version: '22.12')
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+
+	runtimeOnly 'mysql:mysql-connector-java'
 	annotationProcessor 'org.projectlombok:lombok'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'

@@ -3,21 +3,39 @@ package com.IULP.BackEnd.Entity;
 
 import com.IULP.BackEnd.Common.Role;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity(name = "users")
+@Getter
+@Setter
 public class User implements UserDetails {
     @Id
     private Integer id; // 아이디(학번)
+
+    private String username;
     private String passwordHashed; // 암호화된 비밀번호
 
-    // Constructor
+    public User(){}//기본 생성자
+    public User(Integer id, String username) {
+        this.id = id;
+        this.username = username;
+    }
+
+    public User(Integer id, String username, String encode) {
+        this.id = id;
+        this.username = username;
+        this.passwordHashed=encode;
+    }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
