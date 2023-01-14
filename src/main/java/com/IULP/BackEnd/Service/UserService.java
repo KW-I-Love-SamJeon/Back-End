@@ -1,26 +1,39 @@
 package com.IULP.BackEnd.Service;
 
-import com.IULP.BackEnd.DTO.UserDto;
 import com.IULP.BackEnd.Model.User;
-import com.IULP.BackEnd.Repository.UserRepository;
+import com.IULP.BackEnd.dao.UserDao;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-
-@RequiredArgsConstructor
 @Service
-public class UserService {
+@RequiredArgsConstructor
+public class UserService implements UserDetailsService {
+    private final UserDao userDao;
 
-    private final UserRepository userRepository;
+    @Override
+    public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
 
-    private final BCryptPasswordEncoder encoder;
+        User user = userDao.findUser(id);
 
-    @Transactional
-    public boolean join(UserDto dto) {
-        dto.setPassword(encoder.encode(dto.getPassword()));
-        return userRepository.save(dto.toEntity()) != null;
+        if( user == null ) {
+            throw new UsernameNotFoundException(id);
+        }
+        return user;
+    }
+    public User findUser(String id){
+        return userDao.findUser(id);
     }
 
+    public User updateUser(User user){
+        userDao.updateUser(user);
+        return user;
+    }
+
+    public Boolean deleteUser(String id){
+        userDao.deleteUser(id);
+        return true;
+    }
 }
