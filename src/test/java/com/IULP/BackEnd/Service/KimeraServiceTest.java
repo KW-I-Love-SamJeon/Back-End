@@ -10,13 +10,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class ConvertServiceTest {
-
+class KimeraServiceTest {
     @Autowired
-    ConvertService convertService;
+    private KimeraService kimeraService;
 
     @Test
-    public void test() throws Exception{
-        convertService.convert();
+    public void process(){
+       kimeraService.process();
     }
 }
