@@ -1,34 +1,64 @@
 package com.IULP.BackEnd.Model;
 
-import com.IULP.BackEnd.Common.Role;
+
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
+
 @Getter
-@Entity
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false, length = 30, unique = true)
-    private String username; // 아이디
-
-    @Column(nullable = false)
+@Setter
+@Builder
+public class User implements UserDetails {
+    private String id;
+    private String pw;
     private String nickname;
-
-    @Column(nullable = false, length = 100)
-    private String password;
-
-    @Column(nullable = false, length = 50)
+    private int age;
     private String email;
+    private String phoneNumber;
+    private char sex;
+    private long cash;
+    private String adminAuth;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Role role;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        Collection<GrantedAuthority> collection = new ArrayList<>();
+        collection.add(() -> {
+                return adminAuth;
+        });
+        return collection;
+    }
 
+    @Override
+    public String getPassword() {
+        return pw;
+    }
+
+    @Override
+    public String getUsername() {
+        return id;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }
