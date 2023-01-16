@@ -17,13 +17,13 @@ public class ObjService {
     public List<Obj> getObjList(){
         return objDao.getObjList();
     }
-    public Obj getObj(String obj, String author){
-        return objDao.getObj(obj, author);
+    public Obj getObj(String obj){
+        return objDao.getObj(obj);
     }
 
-    public boolean deleteObj(String title, String author){
-        objDao.deleteObj(title, author);
-        if(getObj(title, author).equals(null)) return false;
+    public boolean deleteObj(String title){
+        objDao.deleteObj(title);
+        if(getObj(title).equals(null)) return false;
         else return true;
     }
 

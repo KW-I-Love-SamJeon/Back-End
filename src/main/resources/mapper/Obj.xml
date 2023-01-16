@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.IULP.BackEnd.dao.ObjDao">
+    <select id="getObjList" resultType="com.IULP.BackEnd.Model.Obj">
+        select * from Obj
+    </select>
+
+    <select id="getObj" resultType="com.IULP.BackEnd.Model.Obj">
+        select * from Obj where title = #{obj};
+    </select>
+
+    <delete id="deleteUser">
+        DELETE FROM users
+        WHERE id = #{obj}
+    </delete>
+</mapper>

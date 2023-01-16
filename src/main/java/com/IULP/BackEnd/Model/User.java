@@ -20,7 +20,6 @@ public class User implements UserDetails {
     private String email;
     private String phoneNumber;
     private char sex;
-    private long cash;
     private String adminAuth;
 
     @Override

@@ -9,6 +9,6 @@ import java.util.List;
 @Mapper
 public interface ObjDao {
     public List<Obj> getObjList();
-    public Obj getObj(String title, String author);
-    public void deleteObj(String title, String author);
+    public Obj getObj(String title);
+    public void deleteObj(String title);
 }
