@@ -16,8 +16,11 @@ public class KimeraService {
         roslaunch.setPriority(Thread.NORM_PRIORITY);
         rosservice.setPriority(Thread.MIN_PRIORITY);
 
+        System.out.println("roscore");
         roscore.start();
+        System.out.println("roslaunch");
         roslaunch.start();;
+        System.out.println("rosservice");
         rosservice.start();
     }
 }
