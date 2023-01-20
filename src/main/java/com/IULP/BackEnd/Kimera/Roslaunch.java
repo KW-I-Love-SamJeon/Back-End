@@ -20,7 +20,7 @@ public class Roslaunch extends Thread{
 //        }
 
         ProcessBuilder processBuilder = new ProcessBuilder();
-        processBuilder.command("date");
+        processBuilder.command("pwd");
         try{
             // Run script
             Process process = processBuilder.start();
@@ -34,7 +34,7 @@ public class Roslaunch extends Thread{
             while ((line = reader.readLine()) != null) {
                 output.append(line);
             }
-
+            System.out.println("roslaunch");
             System.out.println(output.toString());
 
         }catch(Exception e){
