@@ -1,26 +1,34 @@
 package com.IULP.BackEnd.Service;
 
-import com.IULP.BackEnd.Kimera.Roscore;
-import com.IULP.BackEnd.Kimera.Roslaunch;
-import com.IULP.BackEnd.Kimera.Rosservice;
+import com.IULP.BackEnd.Kimera.FirstStep;
+import com.IULP.BackEnd.Kimera.FourthStep;
+import com.IULP.BackEnd.Kimera.ThirdStep;
+import com.IULP.BackEnd.Kimera.SecondStep;
 import org.springframework.stereotype.Service;
 
 @Service
 public class KimeraService {
     public void process(){
-        Roscore roscore = new Roscore();
-        Roslaunch roslaunch = new Roslaunch();
-        Rosservice rosservice = new Rosservice();
+        FirstStep firstStep = new FirstStep();
+        ThirdStep thirdStep = new ThirdStep();
+        SecondStep secondStep = new SecondStep();
+        FourthStep fourthStep = new FourthStep();
 
-        roscore.setPriority(Thread.MAX_PRIORITY);
-        roslaunch.setPriority(Thread.NORM_PRIORITY);
-        rosservice.setPriority(Thread.MIN_PRIORITY);
+        firstStep.setPriority(Thread.MAX_PRIORITY);
+        thirdStep.setPriority(Thread.MIN_PRIORITY);
+        secondStep.setPriority(Thread.NORM_PRIORITY);
+        fourthStep.setPriority(Thread.MIN_PRIORITY);
+        System.out.println("First");
+        firstStep.start();
 
-        System.out.println("roscore");
-        roscore.start();
-        System.out.println("roslaunch");
-        roslaunch.start();;
-        System.out.println("rosservice");
-        rosservice.start();
+        System.out.println("Second");
+        secondStep.start();
+
+        System.out.println("Third");
+        thirdStep.start();;
+
+        System.out.println("Fourth");
+        secondStep.start();
+
     }
 }

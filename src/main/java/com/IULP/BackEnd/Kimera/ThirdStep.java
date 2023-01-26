@@ -1,15 +1,23 @@
 package com.IULP.BackEnd.Kimera;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Rosservice extends Thread {
-    public void run() {
+public class ThirdStep extends Thread{
 
-            //String[] rosservice = new String[]{"rosservice","call", "/kimear_semantics_mode/generate_mesh"};
+    public void run() {
+        //String[] launch = new String[]{"roslaunch","kimera_semantics_res", "kimera_semantics.launch", "play_back:=true"};
+//        String[] launch = new String[]{"date"};
+//
+//        ProcessBuilder processBuilder = new ProcessBuilder(launch);
+//        try {
+//            Process process = processBuilder.start();
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+
         ProcessBuilder processBuilder = new ProcessBuilder();
-        processBuilder.command("rosservice","call", "/kimear_semantics_mode/generate_mesh");
+        processBuilder.command("pwd");
         try{
             // Run script
             Process process = processBuilder.start();
@@ -23,12 +31,12 @@ public class Rosservice extends Thread {
             while ((line = reader.readLine()) != null) {
                 output.append(line);
             }
-            System.out.println("roscore");
+            System.out.println("Third Step");
             System.out.println(output.toString());
 
         }catch(Exception e){
             e.printStackTrace();
         }
-        //for(int i=0; i<100; i++) System.out.println(1);
+        //for(int i=0; i<100; i++) System.out.println(2);
     }
 }

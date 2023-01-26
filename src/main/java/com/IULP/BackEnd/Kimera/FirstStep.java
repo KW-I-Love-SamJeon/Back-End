@@ -1,26 +1,23 @@
 package com.IULP.BackEnd.Kimera;
 
-import org.apache.tomcat.jni.Proc;
-
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Roslaunch extends Thread{
-
-    public void run() {
-        //String[] launch = new String[]{"roslaunch","kimera_semantics_res", "kimera_semantics.launch", "play_back:=true"};
-//        String[] launch = new String[]{"date"};
+public class FirstStep extends Thread{
+    public void run(){
+//        String[] roscore = new String[]{"roscore"};
+//        String[] roscore = new String[]{"pwd"};
 //
-//        ProcessBuilder processBuilder = new ProcessBuilder(launch);
+//        ProcessBuilder processBuilder = new ProcessBuilder(roscore);
 //        try {
 //            Process process = processBuilder.start();
 //        } catch (IOException e) {
 //            throw new RuntimeException(e);
 //        }
+//        System.out.println("ROSCORE");
 
         ProcessBuilder processBuilder = new ProcessBuilder();
-        processBuilder.command("pwd");
+        processBuilder.command("roscore");
         try{
             // Run script
             Process process = processBuilder.start();
@@ -34,12 +31,14 @@ public class Roslaunch extends Thread{
             while ((line = reader.readLine()) != null) {
                 output.append(line);
             }
-            System.out.println("roslaunch");
+            System.out.println("First Step");
             System.out.println(output.toString());
 
         }catch(Exception e){
             e.printStackTrace();
         }
-        //for(int i=0; i<100; i++) System.out.println(2);
+
+
+        //for(int i=0; i<100; i++) System.out.println(3);
     }
 }
