@@ -28,7 +28,6 @@ public class KimeraService {
         thirdStep.start();;
 
         System.out.println("Fourth");
-        secondStep.start();
-
+        fourthStep.start();
     }
 }
