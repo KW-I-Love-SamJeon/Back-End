@@ -17,7 +17,7 @@ public class ThirdStep extends Thread{
 //        }
 
         ProcessBuilder processBuilder = new ProcessBuilder();
-        processBuilder.command("pwd");
+        processBuilder.command("roslaunch kimera_semantics_ros kimera_semantics_euroc.launch");
         try{
             // Run script
             Process process = processBuilder.start();
