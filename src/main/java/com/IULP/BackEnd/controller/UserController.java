@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -25,13 +26,13 @@ public class UserController {
 
     private final HttpServletResponse response;
 
-//
-//    @GetMapping("/login")
-//    public ResponseEntity<HttpStatus> login(@RequestBody Map<String,Object> json){
-//        String id= (String) json.get("id");
-//        User user = userService.findUser(id);
-//        if(user==null||user.getPw().equals((String)json.get("pw"))) return null;
-//    }
+
+    @GetMapping("/login")
+    public ResponseEntity<HttpStatus> login(@RequestBody Map<String,Object> json){
+        String id= (String) json.get("loginId");
+        User user = userService.findUser(id);
+        if(user==null||user.getPw().equals((String)json.get("loginPw"))) return null;
+    }
 
     
     @GetMapping("/loginFail")
