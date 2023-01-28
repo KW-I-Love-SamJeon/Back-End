@@ -32,6 +32,7 @@ public class UserController {
         String id= (String) json.get("loginId");
         User user = userService.findUser(id);
         if(user==null||user.getPw().equals((String)json.get("loginPw"))) return null;
+        return ResponseEntity.ok().body(HttpStatus.OK);
     }
 
     
